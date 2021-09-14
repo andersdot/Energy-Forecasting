@@ -9,3 +9,4 @@ I will use solar irradiance data in 4 locations in the US: Seattle WA, Los Angel
 I will build the models on a training/test set of data, and compare models using a validation set. 
 
 The model comparison will be MSE, MAE, as well as PPC where model uncertainties are provided. 
+
