@@ -59,7 +59,7 @@ def access_data(columns, f, time_series, index):
 def create_single_timeseries(f, columns, index):
     """
     Given a single file,
-    generate a DataFrame with columns and index 
+    generate a DataFrame with columns and index, 
     indexed by time
     """
     time_index = pd.to_datetime(f['time_index'][...].astype(str)).tz_localize(None)
@@ -95,7 +95,6 @@ def timeseries(lon=-105, lat=40, years=None, columns=None):
 
     #since the file's already read in, let's create it's time_series
     time_series = create_single_timeseries(f, columns, index)
-    print(len(time_series))
 
     #append other years' timeseries
     # !!! this assumes that the meta data is the same for each file
@@ -105,5 +104,4 @@ def timeseries(lon=-105, lat=40, years=None, columns=None):
             f = h5pyd.File(f"/nrel/nsrdb/v3/nsrdb_{y}.h5", 'r')
             ts_new = create_single_timeseries(f, columns, index)
             time_series = time_series.append(ts_new)
-            print(len(ts_new), len(time_series))
     return meta, time_series
